@@ -1,4 +1,11 @@
 <%- include("../partials/header") %>
+<!-- mapbox -->
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+
+
 <div class = "container">
 	<div class="row">
 		<div class = "col-md-3">
@@ -10,6 +17,7 @@
 				<li class="list-group-item">Info 2</li>
 				<li class="list-group-item">Info 3</li>
 			</div>
+			<div id="map"></div>
 		</div>
 		<div class="col-md-9">
 			<div class="thumbnail">
@@ -75,16 +83,20 @@ L.mapbox.accessToken = "<%= process.env.MAPBOX_GEOCODING_API_KEY %>";
 // var map = L.mapbox.map('map', 'mapbox.streets')
 //     .setView([<%=campground.lng%>, <%=campground.lat%>], 17);
     
-mapboxgl.accessToken = "<%= process.env.MAPBOX_GEOCODING_API_KEY %>";
+mapboxgl.accessToken = "<%= 'pk.eyJ1IjoiYW1hbmRhY2hlbnlvIiwiYSI6ImNrOTd6dXEwOTBrdmMzZnRhbXBhYjhyOGQifQ.eNMJ7RIcYNu0jHOEqFy_1Q' %>";
 var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [<%=campground.lat%>, <%=campground.lng%>], // starting position
-    zoom: 15 // starting zoom
+	container: 'map',
+	style: 'mapbox://styles/mapbox/streets-v11',
+	center: [-79.4512, 43.6568],
+	zoom: 13
 });
-        
-// Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
+ 
+map.addControl(
+	new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl
+	})
+);
 </script>
 
 
