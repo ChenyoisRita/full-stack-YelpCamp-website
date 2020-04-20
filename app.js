@@ -20,7 +20,7 @@ const options = {
  useUnifiedTopology: true,
  useNewUrlParser: true
  };
-mongoose.connect('mongodb://localhost/yelp_camp', options).then(()=>{
+mongoose.connect('mongodb+srv://amanda:Wangshuofeng0828!@clusterforyelpcamp-vlbra.mongodb.net/test?retryWrites=true&w=majority', options).then(()=>{
     console.log("Connected");
 })
 .catch((err)=>{
