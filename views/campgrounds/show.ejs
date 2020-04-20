@@ -70,7 +70,22 @@
 	</div>
 </div>
 
-
+<script>
+L.mapbox.accessToken = "<%= process.env.MAPBOX_GEOCODING_API_KEY %>";
+// var map = L.mapbox.map('map', 'mapbox.streets')
+//     .setView([<%=campground.lng%>, <%=campground.lat%>], 17);
+    
+mapboxgl.accessToken = "<%= process.env.MAPBOX_GEOCODING_API_KEY %>";
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [<%=campground.lat%>, <%=campground.lng%>], // starting position
+    zoom: 15 // starting zoom
+});
+        
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+</script>
 
 
 
