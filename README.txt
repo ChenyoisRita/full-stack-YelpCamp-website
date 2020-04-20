@@ -1,5 +1,5 @@
-# Welcome to my YelpCamp! The website link is as follows:
-# https://frozen-crag-62109.herokuapp.com/
+#Welcome to my YelpCamp! The website link is as follows:
+#https://frozen-crag-62109.herokuapp.com/
 
 
 
