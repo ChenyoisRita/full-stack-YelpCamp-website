@@ -1,11 +1,11 @@
 {
-  "name": "v1",
+  "name": "yelpcamp",
   "version": "1.0.0",
-  "description": "",
+  "description": "* Prevent an unauthenticated user from creating a campground * Save username+id to newly created campground",
   "main": "app.js",
   "scripts": {
-    "test": "YelpCamp v1",
-	"start": "node app.js"
+    "test": "YelpCamp",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +20,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1"
-  }
+  },
+  "devDependencies": {}
 }
