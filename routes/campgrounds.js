@@ -16,14 +16,22 @@ let geo = require('mapbox-geocoding');
 geo.setAccessToken('pk.eyJ1IjoiYW1hbmRhY2hlbnlvIiwiYSI6ImNrOTd6dXEwOTBrdmMzZnRhbXBhYjhyOGQifQ.eNMJ7RIcYNu0jHOEqFy_1Q');
 
 //INDEX - show all campgrounds
-router.get("/", function(req, res){
-    // Get all campgrounds from DB
-    Campground.find({}, function(err, allCampgrounds){
-       if(err){
-           console.log(err);
-       } else {
-          res.render("campgrounds/index",{campgrounds: allCampgrounds, page: 'campgrounds'});
-       }
+router.get("/", function (req, res) {
+    var perPage = 8;
+    var pageQuery = parseInt(req.query.page);
+    var pageNumber = pageQuery ? pageQuery : 1;
+    Campground.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allCampgrounds) {
+        Campground.count().exec(function (err, count) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("campgrounds/index", {
+                    campgrounds: allCampgrounds,
+                    current: pageNumber,
+                    pages: Math.ceil(count / perPage)
+                });
+            }
+        });
     });
 });
 
