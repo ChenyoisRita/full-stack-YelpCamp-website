@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground");
 var middleware = require("../middleware");
-var NodeGeocoder = require("node-geocoder");
 
 var options = {
     provider: 'google',
@@ -12,7 +11,7 @@ var options = {
 };
 
 //mapbox
-let geo = require('@mapbox/mapbox-gl-geocoder');
+let geo = require('mapbox-geocoding');
 
 geo.setAccessToken('pk.eyJ1IjoiYW1hbmRhY2hlbnlvIiwiYSI6ImNrOTd6dXEwOTBrdmMzZnRhbXBhYjhyOGQifQ.eNMJ7RIcYNu0jHOEqFy_1Q');
 
