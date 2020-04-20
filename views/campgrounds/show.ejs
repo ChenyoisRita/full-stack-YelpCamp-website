@@ -79,16 +79,12 @@
 </div>
 
 <script>
-L.mapbox.accessToken = "<%= process.env.MAPBOX_GEOCODING_API_KEY %>";
-// var map = L.mapbox.map('map', 'mapbox.streets')
-//     .setView([<%=campground.lng%>, <%=campground.lat%>], 17);
-    
 mapboxgl.accessToken = "<%= 'pk.eyJ1IjoiYW1hbmRhY2hlbnlvIiwiYSI6ImNrOTd6dXEwOTBrdmMzZnRhbXBhYjhyOGQifQ.eNMJ7RIcYNu0jHOEqFy_1Q' %>";
 var map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/streets-v11',
-	center: [-79.4512, 43.6568],
-	zoom: 13
+	center: [<%=campground.lat%>, <%=campground.lng%>],
+	zoom: 15
 });
  
 map.addControl(
