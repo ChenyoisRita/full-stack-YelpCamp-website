@@ -44,7 +44,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 	geo.geocode('mapbox.places', req.body.location, function(err, geoData) {
         if (err) {
             console.log(req.body.location, geoData);
-            req.flash('error', 'Invalid address');
+            req.flash('error', err.message);
             return res.redirect('back');
         }
         var foundLocation = geoData.features[0];
@@ -102,7 +102,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, (req, res) => {
     geo.geocode('mapbox.places', req.body.campground.location, function(err, geoData) {
         if (err) {
             console.log(req.body.campground.location, geoData);
-            req.flash('error', 'Invalid address');
+            req.flash('error', err.message);
             return res.redirect('back');
         }
         var foundLocation = geoData.features[0];
