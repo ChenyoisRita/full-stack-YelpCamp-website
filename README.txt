@@ -1,3 +1,10 @@
+Welcome to my YelpCamp! The website link is as follows:
+https://frozen-crag-62109.herokuapp.com/
+
+
+
+
+
 ##Users + Campgrounds
 * Prevent an unauthenticated user from creating a campground
 * Save username+id to newly created campground
