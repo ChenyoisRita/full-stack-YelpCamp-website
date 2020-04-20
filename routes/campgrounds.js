@@ -12,9 +12,9 @@ var options = {
 };
 
 //mapbox
-let geo = require('mapbox-geocoding');
+let geo = require('@mapbox/mapbox-gl-geocoder');
 
-geo.setAccessToken(process.env.MAPBOX_GEOCODING_API_KEY);
+geo.setAccessToken('pk.eyJ1IjoiYW1hbmRhY2hlbnlvIiwiYSI6ImNrOTd6dXEwOTBrdmMzZnRhbXBhYjhyOGQifQ.eNMJ7RIcYNu0jHOEqFy_1Q');
 
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
